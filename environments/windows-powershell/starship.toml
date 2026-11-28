@@ -1,0 +1,124 @@
+# Get editor completions based on the Starship config schema.
+"$schema" = "https://starship.rs/config-schema.json"
+
+# Render all normal Starship modules, followed by both Moon Icon Daemon
+# representations and then the normal prompt character.
+#
+# Modules explicitly placed alongside $all are not duplicated by $all.
+#
+# While comparing the two Moon representations, the prompt order is:
+#
+#   emoji → Nerd Font → prompt character
+# format = "$all${env_var.MOON_ICON_EMOJI}${env_var.MOON_ICON_NERD_FONT}$character"
+
+
+
+# Global timeout for commands executed by Starship modules.
+# command_timeout = 3000
+
+format = "$all${custom.moon_imgcat}$character"
+# format = "$directory$line_break${custom.moon_imgcat}$character"
+
+
+# ---------------------------------------------------------------------------
+# Moon Image — Precomputed OSC 1337
+# ---------------------------------------------------------------------------
+# Reads the precomputed Moon image sequence and emits it unchanged.
+#
+# cmd.exe avoids the considerable startup overhead of PowerShell.
+#
+# The trailing 'ver >nul' ensures the command finishes with a
+# normally successful operation, without adding visible output.
+#
+# The image is rendered at one terminal-row height with its
+# original aspect ratio preserved by WezTerm.
+
+[custom.moon_imgcat]
+when = true
+shell = ["cmd"]
+
+# command = 'type %TEMP%\moon-starship-centered-positioned2.osc & ver >nul'
+
+command = 'type %TEMP%\moon-starship-wide-positioned3.osc & ver >nul'
+
+format = "$output"
+unsafe_no_escape = true
+
+
+
+# ---------------------------------------------------------------------------
+# Moon Icon Daemon — Emoji
+# ---------------------------------------------------------------------------
+# Moon Icon Daemon publishes the current 8-state Unicode Moon emoji to:
+#
+#   runtime-generated-state/icon-emoji
+#
+# The generated file contains a Unicode code-point escape such as:
+#
+#   \U0001F314
+#
+# The PowerShell/Zsh shell integration decodes that value and keeps the
+# process-scoped MOON_ICON_EMOJI environment variable synchronized with it.
+#
+# When authoritative emoji state exists:
+#
+#   MOON_ICON_EMOJI=<decoded Moon emoji>
+#
+# When authoritative state does not exist, the shell removes
+# MOON_ICON_EMOJI. Starship then displays the telescope fallback below.
+#
+# \U0001F52D = 🔭
+[env_var.MOON_ICON_EMOJI]
+variable = "MOON_ICON_EMOJI"
+default = "\U0001F52D"
+
+# Render only the environment-variable value (or its default), with no
+# additional text, styling, or spacing from the env_var module.
+format = "$env_value"
+disabled = true
+
+# ---------------------------------------------------------------------------
+# Moon Icon Daemon — Nerd Font
+# ---------------------------------------------------------------------------
+# Moon Icon Daemon publishes the current 28-state Nerd Fonts Weather Moon
+# glyph to:
+#
+#   runtime-generated-state/icon-nerd-font
+#
+# The generated file contains a Unicode code-point escape such as:
+#
+#   \uE3DF
+#
+# The PowerShell/Zsh shell integration decodes that value and keeps the
+# process-scoped MOON_ICON_NERD_FONT environment variable synchronized with
+# it.
+#
+# When authoritative Nerd Font state exists:
+#
+#   MOON_ICON_NERD_FONT=<decoded Moon glyph>
+#
+# When authoritative state does not exist, the shell removes
+# MOON_ICON_NERD_FONT. Starship then displays the telescope fallback below.
+#
+# \ueb68 =  (nf-cod-telescope nerd font icon)
+[env_var.MOON_ICON_NERD_FONT]
+variable = "MOON_ICON_NERD_FONT"
+default = "\ueb68"
+
+# Render only the environment-variable value (or its default), with no
+# additional text, styling, or spacing from the env_var module.
+format = "$env_value"
+disabled = true
+
+
+# ---------------------------------------------------------------------------
+# Prompt character
+# ---------------------------------------------------------------------------
+# Starship's normal prompt symbol.
+#
+# No leading space is added here, so the two Moon representations appear
+# directly adjacent to each other and to the prompt symbol.
+#
+# The trailing space after $symbol is where typed input begins.
+[character]
+format = "$symbol "

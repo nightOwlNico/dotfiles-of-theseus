@@ -1,0 +1,106 @@
+[projects."git.chaosgroup.com/evolvelab/VerasClient"]
+# worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
+
+# Folder name = last part of the branch name
+worktree-path = "{{ repo_path }}/../{{ branch | basename | sanitize }}"
+
+aliases.new = '''
+set -euo pipefail
+
+# Require exactly one branch description
+set -- {{ args }}
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: wt new <description-or-ticket-description>" >&2
+  exit 1
+fi
+
+suffix="$1"
+
+# Validate the branch suffix (kebab-case, Jira ticket optional)
+if [[ ! "$suffix" =~ ^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$ ]]; then
+  echo "Invalid branch suffix: $suffix" >&2
+  exit 1
+fi
+
+# Fetch latest main (stop on failure)
+git fetch origin main
+
+# Read version from origin/main (stop on failure)
+if ! version=$(git show origin/main:VerasReleases/version.txt); then
+  echo "Failed to read version.txt from origin/main" >&2
+  exit 1
+fi
+
+# Remove a possible Windows CR line ending
+version="${version%$'\r'}"
+
+# Validate the version
+if [[ ! "$version" =~ ^[0-9]+(\.[0-9]+){3}$ ]]; then
+  echo "Invalid version: $version" >&2
+  exit 1
+fi
+
+# Create branch and worktree
+branch="$version/NA/$suffix"
+echo "Creating: $branch"
+
+wt switch --create "$branch" --base=origin/main
+'''
+
+
+[projects."git.chaosgroup.com/evolvelab/VerasRenderingService"]
+# worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
+
+# Folder name = last part of the branch name
+worktree-path = "{{ repo_path }}/../{{ branch | basename | sanitize }}"
+
+aliases.new = '''
+set -euo pipefail
+
+# Require exactly one branch description
+set -- {{ args }}
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: wt new <description-or-ticket-description>" >&2
+  exit 1
+fi
+
+suffix="$1"
+
+# Validate the branch suffix (kebab-case, Jira ticket optional)
+if [[ ! "$suffix" =~ ^[A-Za-z0-9]+(-[A-Za-z0-9]+)*$ ]]; then
+  echo "Invalid branch suffix: $suffix" >&2
+  exit 1
+fi
+
+# Fetch latest VerasRenderingService main (stop on failure)
+git fetch origin main
+
+# Locate the shared VerasClient bare repository
+veras_git="E:/VerasClient/.git"
+
+# Fetch latest VerasClient main (stop on failure)
+git -C "$veras_git" fetch origin main
+
+# Read version from VerasClient's origin/main (stop on failure)
+if ! version=$(git -C "$veras_git" show origin/main:VerasReleases/version.txt); then
+  echo "Failed to read VerasClient version.txt from origin/main" >&2
+  exit 1
+fi
+
+# Remove a possible Windows CR line ending
+version="${version%$'\r'}"
+
+# Validate the version
+if [[ ! "$version" =~ ^[0-9]+(\.[0-9]+){3}$ ]]; then
+  echo "Invalid version: $version" >&2
+  exit 1
+fi
+
+# Create branch and worktree in VerasRenderingService
+branch="$version/NA/$suffix"
+echo "Creating: $branch"
+
+wt switch --create "$branch" --base=origin/main
+'''

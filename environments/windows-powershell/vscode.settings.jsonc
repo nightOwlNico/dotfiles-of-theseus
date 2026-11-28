@@ -1,0 +1,152 @@
+{
+  // ==============================Editor Settings==============================
+  "diffEditor.renderSideBySideInlineBreakpoint": 450,
+  // "editor.codeActionsOnSave": {
+  //   "source.sortImports": "explicit",
+  //   "source.fixAll": "explicit"
+  // },
+  "editor.colorDecorators": false,
+  "editor.cursorBlinking": "phase",
+  "editor.cursorStyle": "block-outline",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "MonoLisa",
+  "editor.fontSize": 15,
+  // "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
+  "editor.glyphMargin": false,
+  "[python]": {
+    "editor.glyphMargin": true
+  },
+  "editor.guides.bracketPairs": "active",
+  // "editor.lineNumbers": "relative",
+  "editor.minimap.maxColumn": 80,
+  "editor.rulers": [80],
+  "editor.tabSize": 2,
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // ============================Workbench Settings============================
+  // "workbench.colorCustomizations": {
+  //   // Custom Bracket colors
+  //   "editorBracketHighlight.foreground1": "#00FFFF",
+  //   "editorBracketHighlight.foreground2": "#FFFF00",
+  //   "editorBracketHighlight.foreground3": "#ff00ff",
+  //   "editorBracketHighlight.foreground4": "#00FF00"
+  // },
+  // "workbench.editor.highlightModifiedTabs": true,
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "readme",
+  // ===============Vira Workbench Settings===============
+  "workbench.colorTheme": "Vira Carbon High Contrast",
+  "workbench.colorCustomizations": {
+    "[Vira*]": {
+      "toolbar.activeBackground": "#39EA5F26",
+      "button.background": "#39EA5F",
+      "button.hoverBackground": "#39EA5Fcc",
+      "extensionButton.separator": "#39EA5F33",
+      "extensionButton.background": "#39EA5F14",
+      "extensionButton.foreground": "#39EA5F",
+      "extensionButton.hoverBackground": "#39EA5F33",
+      "extensionButton.prominentForeground": "#39EA5F",
+      "extensionButton.prominentBackground": "#39EA5F14",
+      "extensionButton.prominentHoverBackground": "#39EA5F33",
+      "activityBarBadge.background": "#39EA5F",
+      "activityBar.activeBorder": "#39EA5F",
+      "activityBarTop.activeBorder": "#39EA5F",
+      "list.inactiveSelectionIconForeground": "#39EA5F",
+      "list.activeSelectionForeground": "#39EA5F",
+      "list.inactiveSelectionForeground": "#39EA5F",
+      "list.highlightForeground": "#39EA5F",
+      "sash.hoverBorder": "#39EA5F80",
+      "list.activeSelectionIconForeground": "#39EA5F",
+      "scrollbarSlider.activeBackground": "#39EA5F80",
+      "editorSuggestWidget.highlightForeground": "#39EA5F",
+      "textLink.foreground": "#39EA5F",
+      "progressBar.background": "#39EA5F",
+      "pickerGroup.foreground": "#39EA5F",
+      "tab.activeBorder": "#39EA5F",
+      "tab.activeBorderTop": "#39EA5F00",
+      "tab.unfocusedActiveBorder": "#39EA5F",
+      "tab.unfocusedActiveBorderTop": "#39EA5F00",
+      "tab.activeModifiedBorder": "#39EA5F00",
+      "notificationLink.foreground": "#39EA5F",
+      "editorWidget.resizeBorder": "#39EA5F",
+      "editorWidget.border": "#39EA5F",
+      "settings.modifiedItemIndicator": "#39EA5F",
+      "panelTitle.activeBorder": "#39EA5F",
+      "breadcrumb.activeSelectionForeground": "#39EA5F",
+      "menu.selectionForeground": "#39EA5F",
+      "menubar.selectionForeground": "#39EA5F",
+      "editor.findMatchBorder": "#39EA5F",
+      "selection.background": "#39EA5F40",
+      "statusBarItem.remoteBackground": "#39EA5F14",
+      "statusBarItem.remoteHoverBackground": "#39EA5F",
+      "statusBarItem.remoteForeground": "#39EA5F",
+      "notebook.inactiveFocusedCellBorder": "#39EA5F80",
+      "chat.slashCommandForeground": "#39EA5F",
+      "chat.avatarForeground": "#39EA5F",
+      "activityBarBadge.foreground": "#000000",
+      "button.foreground": "#000000",
+      "statusBarItem.remoteHoverForeground": "#000000",
+      "editorBracketHighlight.foreground1": "#00FFFF",
+      "editorBracketHighlight.foreground2": "#FFFF00",
+      "editorBracketHighlight.foreground3": "#ff00ff",
+      "editorBracketHighlight.foreground4": "#00FF00",
+      "statusBar.debuggingBackground": "#39EA5F33",
+      "statusBar.debuggingForeground": "#39EA5F",
+      "extensionButton.border": "#39EA5F14",
+      "notebook.focusedCellBorder": "#39EA5F",
+      "notebook.selectedCellBorder": "#39EA5F",
+      "notebook.inactiveSelectedCellBorder": "#39EA5F80"
+    }
+  },
+  "workbench.iconTheme": "vira-icons-carbon",
+  "viraTheme.accent": "Lime",
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  // ============================Personal Extensions============================
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  // "highlight-matching-tag.highlightFromContent": true,
+  // "highlight-matching-tag.highlightSelfClosing": true,
+  // "highlight-matching-tag.styles": {
+  //   "opening": {
+  //     "name": {
+  //       "underline": "#FFFF00"
+  //     }
+  //   }w
+  // },
+  "indentRainbow.colors": 
+  [
+    "rgba(0,0,0,0)",
+    "rgba(0,0,0,.33)",
+    "rgba(0,0,0,.66)",
+    "rgba(0,0,0,.99)"
+  ],
+  // ===================== INDENT RAINBOW RIGHT-BORDER HACK DOC ====================
+  // Why these two settings are changed together:
+  // 1) "indentRainbow.indicatorStyle": "light"
+  //    - Switches indent-rainbow from full background fill to a border indicator style.
+  // 2) "indentRainbow.lightIndicatorStyleLineWidth": 17.5
+  //    - Makes the border indicator visually close to the old fill width.
+  //
+  // Required local extension source patch (outside this workspace):
+  // C:\Users\Nico\.vscode\extensions\oderwat.indent-rainbow-8.3.1\out\src\extension.js
+  // In activate(), under: else if (indicatorStyle === 'light')
+  // borderWidth changed from left-border slot to right-border slot.
+  // Before: 0 0 0 [lineWidth]px
+  // After:  0 [lineWidth]px 0 0
+  //
+  // Why that source patch is the only reason these settings are used:
+  // - With the default left-side border, VS Code vertical guides can be obscured.
+  // - Moving the border to the right keeps indent guides and bracket-pair guides visible.
+  // - Therefore, these two settings intentionally depend on that local source hack.
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 17.5,
+  // =================== END INDENT RAINBOW RIGHT-BORDER HACK DOC ==================
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.tokenColorCustomizations": {},
+  "workbench.secondarySideBar.defaultVisibility": "visible",
+  "chat.viewSessions.orientation": "stacked",
+  "workbench.productIconTheme": "viraUIIcons",
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+}
